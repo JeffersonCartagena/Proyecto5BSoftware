@@ -1,0 +1,133 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/12/2023, 23:02:20
+    Author     : User
+*/
+
+.navbar {
+    background-color: #17a2b8 !important; /* Fondo celeste para la barra de navegación */
+}
+
+.sidebar {
+    background-color: #f8f9fa; /* Fondo de la barra lateral */
+    color: #000; /* Color del texto en la barra lateral */
+    transition: all 0.3s ease; /* Transición para suavizar los cambios */
+}
+
+.sidenav {
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #000;
+   background-color: #17a2b8 !important; /* Resalte de color celeste al pasar el cursor */
+}
+
+/* Estilos para el contenido principal */
+main {
+    background-color: #ecf0f1; /* Fondo del contenido principal */
+    padding: 20px;
+}
+
+/* Estilos para el pie de página */
+.footer {
+    text-align: center;
+    padding: 10px;
+    color: #ffffff; /* Color del texto en el pie de página */
+    background-color: #17a2b8 !important; /* Fondo celeste para el pie de página */
+}
+
+.sidenav a.reportes-link {
+    color: tomato; /* Cambiar al color tomate */
+}
+
+/* Estilos para la barra de navegación Bootstrap */
+.nav-tabs {
+    margin-top: 20px;
+}
+
+/* Estilos para los contenedores de contenido */
+.tab-pane {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+  .table-custom {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .table-custom th,
+        .table-custom td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table-custom thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .table-custom tbody+tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+        .table-custom .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 123, 255, 0.05);
+        }
+
+        .table-custom tbody tr:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        .table-custom th,
+        .table-custom td {
+            border: 1px solid #dee2e6;
+        }
+
+        .btn-custom {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .custom-file-label {
+            overflow: hidden;
+        }
+
+        .verification-checkbox {
+            margin-bottom: 0;
+        }
+
+        .color-checkbox:checked + .verification-label {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .register-btn {
+            background-color: #007bff;
+            color: #fff;
+        }

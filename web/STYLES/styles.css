@@ -1,0 +1,78 @@
+/* Bootstrap styles */
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+
+/* Tu estilo personalizado */
+body {
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.navbar {
+    background-color: #17a2b8; /* Azul claro */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #fff !important; /* Color de texto blanco */
+}
+
+.navbar-toggler-icon {
+    background-color: #fff; /* Icono del botón hamburguesa blanco */
+}
+
+.row {
+    margin-right: 0; /* Elimina el margen derecho en las filas */
+    margin-left: 0; /* Elimina el margen izquierdo en las filas */
+}
+
+/* Sección izquierda */
+.bg-warning {
+    background-color: #ffc107 !important; /* Fondo naranja */
+}
+
+.orange-box {
+    background-color: #ffc107; /* Fondo naranja claro */
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Sección derecha */
+/* Agrega esta regla al final de tu archivo CSS */
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh; /* Ajusta según tus necesidades */
+    
+}
+
+.img-fluid {
+    max-width: 100%; /* Asegura que la imagen no sea más ancha que el contenedor */
+    max-height: 100%; /* Asegura que la imagen no sea más alta que el contenedor */
+ 
+}
+
+#login-box {
+    background-color: #87CEEB; /* Fondo celeste para el recuadro del login */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#footer {
+    margin-top: 20px; /* Ajuste en el margen superior del pie de página */
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px;
+    background-color: #17a2b8; /* Azul claro para el pie de página */
+    width: 100%;
+}

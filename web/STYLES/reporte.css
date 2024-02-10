@@ -1,0 +1,89 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/12/2023, 23:01:58
+    Author     : User
+*/
+
+.navbar {
+    background-color: #17a2b8 !important; /* Fondo celeste para la barra de navegación */
+}
+
+.sidebar {
+    background-color: #17a2b8; /* Fondo de la barra lateral */
+    color: #000; /* Color del texto en la barra lateral */
+    transition: all 0.3s ease; /* Transición para suavizar los cambios */
+}
+
+.sidenav {
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #000;
+  background-color: #17a2b8 !important; /* Resalte de color celeste al pasar el cursor */
+}
+
+/* Estilos para el contenido principal */
+main {
+    background-color: #ecf0f1; /* Fondo del contenido principal */
+    padding: 20px;
+}
+
+/* Estilos para el pie de página */
+.footer {
+    text-align: center;
+    padding: 10px;
+    color: #ffffff; /* Color del texto en el pie de página */
+    background-color: #17a2b8 !important; /* Fondo celeste para el pie de página */
+}
+
+.sidenav a.reportes-link {
+    color: tomato; /* Cambiar al color tomate */
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    margin-bottom: 20px;
+}
+
+/* Estilos para la barra de búsqueda */
+.form-inline {
+    margin-bottom: 10px;
+}
+
+/* Estilos para la lista de comprobantes */
+.list-group {
+    max-width: 600px; /* Ajusta según tus necesidades */
+    margin: 0 auto;
+}
+
+/* Estilos para cada elemento de la lista */
+.list-group-item {
+    cursor: pointer;
+    border: 1px solid #ccc; /* Borde para resaltar cada elemento */
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Estilos para los botones dentro de los elementos de la lista */
+.list-group-item .btn {
+    margin-top: 5px;
+}
+
+/* Espaciado entre los botones */
+.list-group-item .btn:not(:last-child) {
+    margin-right: 5px;
+}

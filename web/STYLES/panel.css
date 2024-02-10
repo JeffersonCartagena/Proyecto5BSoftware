@@ -1,0 +1,58 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+
+
+/* Estilos para la barra lateral */
+.navbar {
+    background-color: #17a2b8 !important; /* Fondo celeste para la barra de navegación */
+}
+
+.sidebar {
+    background-color: #fd7e14;/* Fondo de la barra lateral */
+    color: #000; /* Color del texto en la barra lateral */
+    transition: all 0.3s ease; /* Transición para suavizar los cambios */
+}
+
+.sidenav {
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #000;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #000;
+    background-color: #17a2b8 !important; /* Resalte de color celeste al pasar el cursor */
+}
+
+/* Estilos para el contenido principal */
+main {
+    background-color: #ecf0f1; /* Fondo del contenido principal */
+    padding: 20px;
+}
+
+/* Estilos para el pie de página */
+.footer {
+    text-align: center;
+    padding: 10px;
+    color: #ffffff; /* Color del texto en el pie de página */
+    background-color: #17a2b8 !important; /* Fondo celeste para el pie de página */
+}
+/* Animación para los recuadros de las imágenes */
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+}
+.sidenav a.reportes-link {
+    color: tomato; /* Cambiar al color tomate */
+}
