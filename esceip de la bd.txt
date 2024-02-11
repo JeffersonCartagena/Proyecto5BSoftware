@@ -1,0 +1,276 @@
+-- Creación de la base de datos
+CREATE DATABASE IF NOT EXISTS BD_BIENESTAR CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- Selección de la base de datos
+USE BD_BIENESTAR;
+
+-- Tabla de Usuarios
+CREATE TABLE Usuarios (
+    UsuarioID INT PRIMARY KEY AUTO_INCREMENT,
+    NombreUsuario VARCHAR(50) NOT NULL,
+    Contrasena VARCHAR(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tabla de Docentes
+CREATE TABLE Docentes (
+    DocenteID INT PRIMARY KEY AUTO_INCREMENT,
+    UsuarioID INT,
+    CorreoElectronico VARCHAR(25),
+    Cedula VARCHAR(20),
+    Cargo VARCHAR(50),
+    Direccion VARCHAR(50),
+    Provinvia varchar(50),
+    Ciudad varchar (50),
+    Telefono VARCHAR(20),
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tabla de Facultades
+CREATE TABLE Facultades (
+    FacultadID INT PRIMARY KEY AUTO_INCREMENT,
+    NombreFacultad VARCHAR(50)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tabla de Carreras
+CREATE TABLE Carreras (
+    CarreraID INT PRIMARY KEY AUTO_INCREMENT,
+    NombreCarrera VARCHAR(50),
+    FacultadID INT,
+    Nivel INT,
+    Curso varchar(5),
+    FOREIGN KEY (FacultadID) REFERENCES Facultades(FacultadID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tabla de Estudiantes
+CREATE TABLE Estudiantes (
+    EstudianteID INT PRIMARY KEY AUTO_INCREMENT,
+    UsuarioID INT,
+    FacultadID INT,
+    CarreraID INT,
+    Nivel INT,
+    Curso INT,
+    TipoDocumento VARCHAR(20),
+    NumeroDocumento VARCHAR(20),
+    PrimerApellido VARCHAR(50),
+    SegundoApellido VARCHAR(50),
+    PrimerNombre VARCHAR(50),
+    SegundoNombre VARCHAR(50),
+    Sexo VARCHAR(10),
+    Genero VARCHAR(15),
+    EstadoCivil VARCHAR(20),
+    Etnia VARCHAR(20),
+    Nacionalidad VARCHAR(50),
+    TipoSangre VARCHAR(5),
+    TieneDiscapacidad VARCHAR(5),
+    PorcentajeDiscapacidad INT,
+    NumeroCarnet VARCHAR(20),
+    TipoDiscapacidad VARCHAR(50),
+    FechaNacimiento DATE,
+    PaisNacimiento VARCHAR(50),
+    PaisResidencia VARCHAR(50),
+    ProvinciaResidencia VARCHAR(50),
+    CantonResidencia VARCHAR(50),
+    CorreoElectronico VARCHAR(50),
+    TelefonoDomicilio VARCHAR(20),
+    IngresoTotalHogar DECIMAL(10, 2),
+    CantidadMiembrosHogar INT,
+    CallePrincipal VARCHAR(100),
+    CalleSecundaria VARCHAR(100),
+    NumeroCasaEdificio VARCHAR(20),
+    CodigoPostal VARCHAR(10),
+    UbicacionGeografica VARCHAR(100),
+    TipoColegio VARCHAR(50),
+    RecibePensionDiferenciada varchar(5),
+    EmpleoIngresos VARCHAR(100),
+    HaPerdidoGratuidad boolean,
+    DedicacionEstudiante VARCHAR(100),
+    RecibeBonoDesarrollo varchar(10),
+    ContactoEmergenciaNombre VARCHAR(50),
+    ContactoEmergenciaParentesco VARCHAR(50),
+    TelefonoDomicilioEmergencia VARCHAR(20),
+    TelefonoMovilEmergencia VARCHAR(20),
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID),
+    FOREIGN KEY (FacultadID) REFERENCES Facultades(FacultadID),
+    FOREIGN KEY (CarreraID) REFERENCES Carreras(CarreraID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tabla de RequisitosBeca
+CREATE TABLE RequisitosBeca (
+    RequisitoID INT PRIMARY KEY AUTO_INCREMENT,
+    TipoAyuda VARCHAR(50),
+    Descripcion TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+
+-- Tabla de ProcesosBeca
+CREATE TABLE ProcesosBeca (
+    ProcesoID INT PRIMARY KEY AUTO_INCREMENT,
+    NombreProceso VARCHAR(100),
+    TipoPrograma VARCHAR(50),
+    FechaInicio DATE,
+    FechaFin DATE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tabla de GestionBeca
+CREATE TABLE GestionBeca (
+    GestionBecaID INT PRIMARY KEY AUTO_INCREMENT,
+    EstudianteID INT,
+    UsuarioID INT,
+    ProcesoID INT,
+    RequisitoID INT,
+    FOREIGN KEY (EstudianteID) REFERENCES Estudiantes(EstudianteID),
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID),
+    FOREIGN KEY (ProcesoID) REFERENCES ProcesosBeca(ProcesoID),
+    FOREIGN KEY (RequisitoID) REFERENCES RequisitosBeca(RequisitoID),
+    EstadoAprobacion BOOLEAN,
+    Comentarios TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Tabla de Reportes
+CREATE TABLE Reportes (
+    ReporteID INT PRIMARY KEY AUTO_INCREMENT,
+    GestionBecaID INT,
+    FOREIGN KEY (GestionBecaID) REFERENCES GestionBeca(GestionBecaID)
+    -- Agrega otras columnas según sea necesario
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+-- Insertar registros en la tabla Usuarios
+INSERT INTO Usuarios (NombreUsuario, Contrasena) VALUES
+('juan', '123'),
+('maria', '1234'),
+('pablo', '123456');
+
+-- Insertar registros en la tabla Docentes
+INSERT INTO Docentes (UsuarioID, CorreoElectronico, Cedula, Cargo, Direccion,Provinvia,Ciudad, Telefono) VALUES
+(1, 'juan@correo.com', '1234567890', 'Profesor', 'Avenida los olivos','Pichcincha','Cayambe', '123456789'),
+(2, 'maria@correo.com', '0987654321', 'Docente', 'Avenido Eloy Alfaro','Pichcincha','Cayambe', '987654321'),
+(3, 'pablo@correo.com', '1357924680', 'Instructor', 'La Merced', 'Imbababura','Ibarra','159753468');
+
+-- Insertar registros en la tabla Facultades
+INSERT INTO Facultades (NombreFacultad) VALUES
+('Facultad de Administración'),
+('Facultad de Software'),
+('Facultad de Diseño');
+
+-- Insertar registros en la tabla Carreras
+INSERT INTO Carreras (NombreCarrera, FacultadID, Nivel, Curso) VALUES
+('Administración de Empresas', 1, 1, 'A'),
+('Ingeniería de Software', 2, 2, 'B'),
+('Diseño Gráfico', 3, 3, 'A');
+
+-- Insertar registros en la tabla Estudiantes
+INSERT INTO Estudiantes (
+    UsuarioID, FacultadID, CarreraID, Nivel, Curso,
+    TipoDocumento, NumeroDocumento, PrimerApellido, SegundoApellido,
+    PrimerNombre, SegundoNombre, Sexo, Genero, EstadoCivil,
+    Etnia, Nacionalidad, TipoSangre, TieneDiscapacidad,
+    PorcentajeDiscapacidad, NumeroCarnet, TipoDiscapacidad, FechaNacimiento,
+    PaisNacimiento, PaisResidencia, ProvinciaResidencia, CantonResidencia,
+    CorreoElectronico, TelefonoDomicilio, IngresoTotalHogar,
+    CantidadMiembrosHogar, CallePrincipal, CalleSecundaria,
+    NumeroCasaEdificio, CodigoPostal, UbicacionGeografica,
+    TipoColegio, RecibePensionDiferenciada, EmpleoIngresos, HaPerdidoGratuidad,
+    DedicacionEstudiante, RecibeBonoDesarrollo, ContactoEmergenciaNombre,
+    ContactoEmergenciaParentesco, TelefonoDomicilioEmergencia, TelefonoMovilEmergencia
+) 
+VALUES (
+    1, 1, 1, 2, 101,
+    'Cédula', '0912345678', 'Montalvo', 'Zambarba',
+    'Juan', 'Pablo', 'Hombre', 'Masculino', 'Soltero',
+    'Indígena', 'Ecuatoriana', 'O+', 'No',
+    '0', 'No', 'Ninguna', '1995-05-15',
+    'Ecuador', 'Ecuador', 'Imbabura', 'Cayambe',
+    'juan.montalvo@example.com', '0993404123', 1200.50,
+    4, 'Av. Principal', 'Av. Secundaria',
+    '123', '170501', 'Pichincha',
+    'Particular', 'No', 'Para Estudiar', 'No',
+    ' Estudia y trabaja', 1, 'Natalia Jarrin',
+    'Hermana', '022303456', '0987654321'
+),
+(
+    2, 1, 2, 1, 201,
+    'Pasaporte', '1012345678', 'Bedata', 'Montes',
+    'Pablo', 'Marcelo', 'Hombre', 'Masculino', 'Soltero',
+    'Blanco', 'Ecuatoriana', 'A-', 'No',
+    '0', 'No', 'Ninguna', '1998-08-25',
+    'Ecuador', 'Ecuador', 'Guayas', 'Guayaquil',
+    'pablo.bedata@example.com', '0993404123', 1500.75,
+    3, 'Av. Libertad', 'Av. Independencia',
+    '456', '090103', 'Guayas',
+    'Particular', 'No', 'Para Estudiar', 'No',
+    'Estudia', 1, 'Sake Sianos',
+    'Padre', '022303455', '0987123456'
+),
+(
+    3, 2, 3, 3, 301,
+    'Cédula', '0712345678', 'Cartagena', 'Ramirez',
+    'Maria', 'Mercedes', 'Mujer', 'Femenino', 'Casado',
+    'Indígena', 'Colombiana', 'B+', "Si",
+    50, '12345', 'Motora', '1987-12-10',
+    'Colombia', 'Ecuador', 'Imbabura', 'Cayambe',
+    'maria.cartagena@example.com', '0993404123', 2000.00,
+    5, 'Av. Bolivar', 'Av. Sucre',
+    '789', '123456', 'Imbabura',
+    'Fiscal', 'No', 'Estudiar', 'No',
+    'Medio tiempo', 2, 'Juan Montalvo',
+    'Hermano', '022303454', '0987456123'
+),
+(
+    4, 3, 1, 2, 101,
+    'Cédula', '0912345678', 'Jarrin', 'Zambarba',
+    'Natalia', 'Fany', 'Mujer', 'Femenino', 'Soltero',
+    'Blanco', 'Ecuatoriana', 'AB+', 'No',
+    '0', 'No', 'Ninguna', '1997-07-20',
+    'Ecuador', 'Ecuador', 'Pichincha', 'Quito',
+    'natalia.jarrin@example.com', '0993404123', 1800.25,
+    4, 'Av. Amazonas', 'Av. Naciones Unidas',
+    '567', '170102', 'Pichincha',
+    'Fiscal', "No", 'Estudiante', "No",
+    'Medio tiempo', 0, 'Pablo Bedata',
+    'Padre', '022303457', '0987654321'
+),
+(
+    5, 3, 2, 1, 201,
+    'Pasaporte', '1012345678', 'Sianos', 'Colombia',
+    'Sake','Pedro', 'Hombre', 'Masculino', 'Casado',
+    'Afrodescendiente', 'Ecuatoriana', 'O-', 'No',
+    '0', 'No', 'Ninguna', '2000-02-28',
+    'Ecuador', 'Ecuador', 'Guayas', 'Guayaquil',
+    'sake.sianos@example.com', '0993404123', 1600.90,
+    3, 'Av. Bolivar', 'Av. Kennedy',
+    '678', '090503', 'Guayas',
+    'Particular', "No", 'Estudiante', "No",
+    'Tiempo parcial', 1, 'Maria Cartagena',
+    'Esposa', '022303458', '0987654321'
+);
+
+-- Insertar registros en la tabla RequisitosBeca
+INSERT INTO RequisitosBeca (TipoAyuda, Descripcion) VALUES
+('Mujeres víctimas de violencia basada en género', 'Descripción del requisito 1'),
+('Hijos e hijas de mujeres víctimas de femicidio', 'Descripción del requisito 2'),
+('Deportistas de alto rendimiento', 'Descripción del requisito 3'),
+('Héroes y heroínas nacionales', 'Descripción del requisito 4'),
+('Situación de escasos recursos', 'Descripción del requisito 5'),
+('Población ecuatoriana migrante retornada', 'Descripción del requisito 6'),
+('Pueblos y nacionalidades', 'Descripción del requisito 7');
+
+-- Insertar registros en la tabla ProcesosBeca
+INSERT INTO ProcesosBeca (NombreProceso, TipoPrograma, FechaInicio, FechaFin) VALUES
+('Programa de Becas Educación Superior', 'Universidades he Institutos', '2023-01-01', '2023-02-01'),
+('Programa de Becas para Educación Secundaria', 'Colegios', '2023-02-01', '2023-03-01'),
+('Programa de Becas para Educación Primaria', 'Escuelas', '2023-03-01', '2023-04-01');
+
+-- Insertar registros en la tabla GestionBeca
+INSERT INTO GestionBeca (EstudianteID, UsuarioID, ProcesoID, RequisitoID, EstadoAprobacion, Comentarios) VALUES
+(1, 1, 1, 1, true, 'Aprobado'),
+(2, 2, 2, 2, false, 'No cumple con requisitos'),
+(3, 3, 3, 3, true, 'Aprobado');
+
+-- Insertar registros en la tabla Reportes
+INSERT INTO Reportes (GestionBecaID) VALUES
+(1),
+(2),
+(3);
+
